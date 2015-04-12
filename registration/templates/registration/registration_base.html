@@ -1,0 +1,31 @@
+{% extends "base_template.html" %}
+
+{% block base_content %}
+<!-- registration content -->
+
+<!-- ******HEADER****** -->
+<!--<header class="header">-->
+    <!--<div class="container">-->
+        <!--&lt;!&ndash;<img class="profile-image img-responsive pull-left" src="{{ profile_image.image }}" alt="{{ user.name }}" />&ndash;&gt;-->
+        <!--<div class="profile-content text-center">-->
+            <!--<hr>-->
+                <!--<h1>My Account</h1>-->
+            <!--<hr>-->
+            <!--&lt;!&ndash;<h1>Register</h1>&ndash;&gt;-->
+            <!--&lt;!&ndash;<h1 class="name">{{ user.first_name }} {{ user.last_name }}</h1>&ndash;&gt;-->
+            <!--&lt;!&ndash;<h2 class="desc">{{ user.}}</h2>&ndash;&gt;-->
+        <!--</div>&lt;!&ndash;//profile&ndash;&gt;-->
+    <!--</div>&lt;!&ndash;//container&ndash;&gt;-->
+<!--</header>&lt;!&ndash;//header&ndash;&gt;-->
+<div class="col-sm-12 text-center">
+    <br>
+    <br>
+    <hr>
+    <h1>My Account</h1>
+    <hr>
+</div>
+<!--<div class="container section-wrapper" id="main">-->
+    {% block content %}
+    {% endblock %}
+<!--</div>-->
+{% endblock %}

@@ -1,0 +1,112 @@
+{% extends "registration/registration_base.html" %}
+
+{% block content %}
+
+    <div class="container sections-wrapper">
+        <div class="row">
+            <div class="primary col-md-4 col-sm-12 col-xs-12">
+                <section class="about section">
+                    <div class="section-inner">
+                        <h2 class="heading">My following Companies</h2>
+                        <div class="content">
+                        </div>
+                    </div>
+                </section>
+                <section class="about section">
+                    <div class="section-inner">
+                        <h2 class="heading">My following Profiles</h2>
+                        <div class="content">
+                            <hr>
+                            {% for following in followings %}
+                                <div class="item row">
+                                    <a class="col-md-3 col-sm-3 col-xs-12" href="{% url 'view_profile' following.username %}">
+                                        <img class="img-responsive project-image fifty-image" src="{{ following.image }}" alt="{{ following.name }}" />
+                                    </a>
+                                    <div class="desc col-md-9 col-sm-9 col-xs-12">
+                                        <a href="{% url 'view_profile' following.username %}">
+                                            <p class="title">{{ following.first_name}} {{ following.last_name }}</p>
+                                        </a>
+                                    </div><!--//desc-->
+                                </div><!--//item-->
+                                <hr>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="primary col-md-8 col-sm-12 col-xs-12">
+                <section class="about section">
+                    <div class="section-inner">
+                        <h2 class="heading">About Me</h2>
+                        <div class="content">
+                            <form method="post" action="">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">
+                                    {{ account_form.username.name }}
+                                </label>
+                                    <div class="col-sm-10">
+                                      {{ account_form.username }}
+                                    </div>
+                                </div>
+                                <br>
+                                <br>
+                                <br>
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">
+                                    {{ account_form.first_name.name }}
+                                </label>
+                                    <div class="col-sm-10">
+                                      {{ account_form.first_name }}
+                                    </div>
+                                </div>
+                                <br>
+                                <br>
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">
+                                    {{ account_form.last_name.name }}
+                                </label>
+                                    <div class="col-sm-10">
+                                      {{ account_form.last_name }}
+                                    </div>
+                                </div>
+                                <br>
+                                <br>
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">
+                                    {{ account_form.email.name }}
+                                </label>
+                                    <div class="col-sm-10">
+                                      {{ account_form.email }}
+                                    </div>
+                                </div>
+                                <br>
+                                <br>
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">
+                                    {{ account_form.one_liner.name }}
+                                </label>
+                                    <div class="col-sm-10">
+                                      {{ account_form.one_liner }}
+                                    </div>
+                                </div>
+                                <br>
+                                <br>
+                                <div class="form-group">
+                                <label class="col-sm-2 control-label">
+                                    {{ account_form.bio.name }}
+                                </label>
+                                    <div class="col-sm-10">
+                                      {{ account_form.bio}}
+                                    </div>
+                                </div>
+                                <button class="btn btn-xl" type="submit">update</button>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

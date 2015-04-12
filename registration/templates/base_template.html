@@ -1,0 +1,234 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>Fundy</title>
+		<meta name="generator" content="Bootply" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+        <!-- Fontawesome Icon font -->
+        <link rel="stylesheet" href="static/css/font-awesome.min.css">
+		<!-- Twitter Bootstrap css -->
+        <link rel="stylesheet" href="static/css/bootstrap.min.css">
+		<!-- jquery.fancybox  -->
+        <link rel="stylesheet" href="static/css/jquery.fancybox.css">
+		<!-- animate -->
+        <link rel="stylesheet" href="static/css/animate.css">
+		<!-- Main Stylesheet -->
+        <link rel="stylesheet" href="static/css/main.css">
+		<!-- media-queries -->
+        <link rel="stylesheet" href="static/css/media-queries.css">
+
+		<!-- Modernizer Script for old Browsers -->
+        <script src="static/js/modernizr-2.6.2.min.js"></script>
+
+
+
+
+        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+        <!-- Custom CSS -->
+		<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+        <!-- Main Stylesheet -->
+        <link rel="stylesheet" href="static/css/main.css">
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+		<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+        <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+
+
+
+	</head>
+	<body>
+<!--df-->
+<header id="navigation" class="navbar-fixed-top navbar">
+            <div class="container">
+                <div class="navbar-header">
+                    <!-- responsive nav button -->
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <i class="fa fa-bars fa-2x"></i>
+                    </button>
+					<!-- /responsive nav button -->
+
+					<!-- logo -->
+                    <a class="navbar-brand" href="{% url 'splash_index' %}">
+						<h1 id="logo" style="
+    margin-top: 0px;
+    margin-bottom: 0px;
+">
+							<img src="/static/img/fundy with tag.png" alt="Fundy">
+						</h1>
+					</a>
+					<!-- /logo -->
+                </div>
+
+				<!-- main nav -->
+                <nav class="collapse navbar-collapse navbar-right" role="navigation">
+                    <ul id="nav" class="nav navbar-nav">
+                        <li class="current"><a href="{% url 'splash_index' %}">Home</a></li>
+                        <li><a href="{% url 'splash_index' %}">Investors</a></li>
+                        <li><a href="{% url 'splash_index' %}">Companies</a></li>
+                        <li><a href="{% url 'splash_index' %}">Community</a></li>
+                        <li><a href="{% url 'splash_index' %}">Contact</a></li>
+                        <li class="dropdown pull-right">
+			            <a href="#" data-toggle="dropdown" class="dropdown-toggle">{% if request.user.is_authenticated %} {{request.user.first_name}} {% else %} search for {% endif %}<b class="caret"></b></a>
+			            <ul class="dropdown-menu">
+			                <li><a href="{% url 'view_profiles' %}">Profiles</a></li>
+			                <li><a href="{% url 'view_companys' %}">Companies</a></li>
+			                <li class="divider"></li>
+			                {% if request.user.is_authenticated %}
+			                <li><a href="{% url 'my_profile' %}">My Account</a></li>
+                            <li><a href="{% url 'logout' %}">Logout</a></li>
+                            {% else %}
+                            <li><a href="{% url 'social:begin' 'facebook' %}">Facebook LogIn</a></li>
+                            {% endif %}
+			            </ul>
+			        </li>
+                       <!--  <li>
+                        	<div class="dropdown">
+							  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">Find
+  							  	<span class="caret"></span>
+							  </button>
+  								<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+ 						   			<li class="specialLi" role="presentation"><a role="menuitem" tabindex="-1" href="#">Profiles</a></li>
+   									<li class="specialLi"role="presentation"><a role="menuitem" tabindex="-1" href="#">Companies</a></li>
+   									<hr>
+   									<li class="specialLi"><a href="#login">Log In</a></li>
+  								</ul>
+							</div>
+                        </li> -->
+                    </ul>
+                </nav>
+				<!-- /main nav -->
+
+            </div>
+</header>
+<!--af-->
+<!--<nav class="navbar navbar-default navbar-fixed-top" role="navigation">-->
+    <!--<div class="container">-->
+        <!--&lt;!&ndash; Brand and toggle get grouped for better mobile display &ndash;&gt;-->
+        <!--<div class="navbar-header">-->
+            <!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">-->
+                <!--<span class="sr-only">Toggle navigation</span>-->
+                <!--<span class="icon-bar"></span>-->
+                <!--<span class="icon-bar"></span>-->
+                <!--<span class="icon-bar"></span>-->
+            <!--</button>-->
+            <!--<a class="navbar-brand" href="/">fundy</a>-->
+        <!--</div>-->
+
+        <!--&lt;!&ndash; Collect the nav links, forms, and other content for toggling &ndash;&gt;-->
+        <!--<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">-->
+            <!--<ul class="nav navbar-nav">-->
+
+            <!--</ul>-->
+            <!--<ul class="nav navbar-nav navbar-right">-->
+                <!--{% if user.is_authenticated %}-->
+                <!--{% else %}-->
+                <!--<a href="{% url 'social:begin' 'linkedin-oauth2' %}">LinkedIn Login</a>-->
+                <!--&lt;!&ndash;<a href="{% url 'social:begin' backend='linkedin-oauth2' %}">LinkedIn</a>&ndash;&gt;-->
+                <!--<a href="{% url 'social:begin' 'facebook' %}">Facebook Login</a>-->
+                <!--<div class="dropdown">-->
+                  <!--<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">-->
+                    <!--Dropdown-->
+                    <!--<span class="caret"></span>-->
+                  <!--</button>-->
+                  <!--<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">-->
+                    <!--<li>-->
+                                <!--<a href="{% url "social:begin" "facebook" %}">Facebook Login</a>-->
+                            <!--</li>-->
+                            <!--<li>-->
+                                <!--<a href="{% url 'social:begin' 'linkedin-oauth2' %}">LinkedIn Login</a>-->
+                            <!--</li>-->
+                      <!--<li>-->
+                                <!--<a href="#"> test</a>-->
+                                <!--<a href="{#{% url 'login' %}#}">Direct Login</a>-->
+                            <!--</li>-->
+                            <!--<li>-->
+                                <!--<a href="{#{% url 'register' %}#}">Register Here</a>-->
+                            <!--</li>-->
+                  <!--</ul>-->
+                <!--</div>-->
+                <!--{% endif %}-->
+            <!--</ul>-->
+        <!--</div>-->
+        <!--&lt;!&ndash; /.navbar-collapse &ndash;&gt;-->
+    <!--</div>-->
+    <!--&lt;!&ndash; /.container &ndash;&gt;-->
+<!--</nav>-->
+
+<!--main content-->
+{% block base_content %}
+{% endblock  %}
+
+<!--/main-->
+    <!-- ******FOOTER****** -->
+    <footer class="footer">
+        <div class="container text-center">
+            <small class="copyright">Designed by fundy</small>
+        </div><!--//container-->
+    </footer><!--//footer-->
+
+    <!-- Javascript -->
+    <script type="text/javascript" src="{% static 'js/jquery-1.11.2.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery-migrate-1.2.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+    <!--<script type="text/javascript" src="{% static 'js/jquery-rss/dist/jquery.rss.min.js' %}"></script>-->
+    <!-- github activity plugin -->
+    <!--<script type="text/javascript" src="assets/plugins/github-activity/dist/mustache/mustache.min.js"></script>-->
+    <!--<script type="text/javascript" src="assets/plugins/github-activity/dist/github-activity-0.1.0.min.js"></script>-->
+    <!-- custom js -->
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+
+    <br>
+
+    <!--<div class="clearfix"></div>-->
+
+    <!--<hr>-->
+    <!--<div class="col-md-12 text-center"><p><p>fundy is made with <i class="glyphicon glyphicon-heart"></i> and sweat by </p></div>-->
+    <!--<hr>-->
+
+	<!--&lt;!&ndash; script references &ndash;&gt;-->
+		<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>-->
+        <!--<script src="{% static 'js/bootstrap.min.js' %}"></script>-->
+        <!--<script src="{% static 'js/scripts.js' %}"></script>-->
+
+
+
+    <!-- Main jQuery -->
+        <script src="static/js/jquery-1.11.1.min.js"></script>
+		<!-- Single Page Nav -->
+        <script src="static/js/jquery.singlePageNav.min.js"></script>
+		<!-- Twitter Bootstrap -->
+        <script src="static/js/bootstrap.min.js"></script>
+		<!-- jquery.fancybox.pack -->
+        <script src="static/js/jquery.fancybox.pack.js"></script>
+		<!-- jquery.mixitup.min -->
+        <script src="static/js/jquery.mixitup.min.js"></script>
+		<!-- jquery.parallax -->
+        <script src="static/js/jquery.parallax-1.1.3.js"></script>
+		<!-- jquery.countTo -->
+        <script src="static/js/jquery-countTo.js"></script>
+		<!-- jquery.appear -->
+        <script src="static/js/jquery.appear.js"></script>
+		<!-- Contact form validation -->
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.32/jquery.form.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.11.1/jquery.validate.min.js"></script>
+		<!-- Google Map -->
+        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+		<!-- jquery easing -->
+        <script src="static/js/jquery.easing.min.js"></script>
+		<!-- jquery easing -->
+        <script src="static/js/wow.min.js"></script>
+
+
+
+	</body>
+</html>

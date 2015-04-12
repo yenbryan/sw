@@ -1,0 +1,74 @@
+{% extends "base_template.html" %}
+
+{% block base_content %}
+
+<!-- ******HEADER****** -->
+<header class="header">
+    <div class="container">
+        <br>
+        <br>
+        <div class="profile-content text-center">
+            <h1 class="name">Profiles</h1>
+        </div><!--//profile-->
+    </div><!--//container-->
+</header><!--//header-->
+<div class="container sections-wrapper">
+        <div class="row">
+            <div class="primary col-md-8 col-sm-12 col-xs-12">
+
+                <section class="about section">
+                    <div class="section-inner">
+                        <hr class="divider" />
+                        {% for profile in profiles %}
+                            <div class="item row">
+                                <a class="col-md-3 col-sm-3 col-xs-12" href="{% url 'view_profile' profile.username %}">
+                                    <img class="img-responsive project-image fifty-image img-circle" src="{{ profile.image }}" alt="{{ profile.first_name }}" />
+                                </a>
+                                <div class="desc col-md-7 col-sm-7 col-xs-12">
+                                    <a href="{% url 'view_profile' profile.username %}">
+                                        <h3 class="title">{{ profile.first_name }}</h3>
+                                    </a>
+                                    <p>{{profile.one_liner}}</p>
+                                </div><!--//desc-->
+                                <div class="desc col-md-2 col-sm-2 col-xs-12">
+                                <a class="btn btn-cta-primary pull-right" href="{% url 'follow' profile.username %}"><i class="fa fa-paper-plane"></i>Follow Me</a>
+                                </div>
+                            </div><!--//item-->
+                            <hr>
+                        {% endfor %}
+                        <div class="pagination text-center">
+                        <span class="step-links">
+                            {% if profiles.has_previous %}
+                                <a href="?page={{ profiles.previous_page_number }}">previous</a>
+                            {% endif %}
+
+                            <span class="current">
+                                Page {{ profiles.number }} of {{ profiles.paginator.num_pages }}
+                            </span>
+
+                            {% if profiles.has_next %}
+                                <a href="?page={{ profiles.next_page_number }}">next</a>
+                            {% endif %}
+                        </span>
+                    </div>
+                    </div>
+                </section>
+            </div>
+            <div class="primary col-md-4 col-sm-12 col-xs-12">
+                <section class="about section">
+                    <div class="section-inner text-center">
+                        <p><b>Popular Profiles</b></p>
+                        <p></p>
+                    </div>
+                </section>
+            </div>
+        </div>
+</div>
+
+<!-- dashboard content -->
+<!--<div class="container section-wrapper" id="main">-->
+    <!--{% block content %}-->
+    <!--{% endblock %}-->
+<!--</div>-->
+
+{% endblock %}

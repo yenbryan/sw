@@ -1,0 +1,71 @@
+{% extends "base_template.html" %}
+
+{% block base_content %}
+
+<!-- ******HEADER****** -->
+<header class="header">
+    <div class="container">
+        <br>
+        <br>
+        <img class="profile-image img-responsive img-circle pull-left" src="{{ profile.image }}" alt="{{ profile.name }}" />
+        <div class="profile-content pull-left">
+            <h1 class="name">{{ profile.first_name }} {{ profile.last_name }}</h1>
+            <h2 class="desc">{{ profile.one_liner }}</h2>
+        </div><!--//profile-->
+        {% if exist %}
+        <a class="btn btn-cta-primary pull-right" href=""><i class=""></i>Following</a>
+        {% else %}
+        <a class="btn btn-cta-primary pull-right" href="{% url 'follow' profile.username %}"><i class="fa fa-paper-plane"></i>Follow Me</a>
+        {% endif %}
+
+    </div><!--//container-->
+</header><!--//header-->
+<div class="container sections-wrapper">
+        <div class="row">
+            <div class="primary col-md-8 col-sm-12 col-xs-12">
+                <section class="about section">
+                    <div class="section-inner">
+                       <p>{{ profile.bio }}</p>
+                    </div>
+                </section>
+            </div>
+            <div class="primary col-md-4 col-sm-12 col-xs-12">
+                <section class="about section">
+                    <div class="section-inner text-center">
+                        <h2 class="heading">Watched Company</h2>
+                        <hr>
+                        <p></p>
+                    </div>
+                </section>
+                <section class="about section">
+                    <div class="section-inner text-center">
+                    <h2 class="heading">My following Profiles</h2>
+                        <div class="content">
+                            <hr>
+                            {% for following in followings %}
+                                <div class="item row">
+                                    <a class="col-md-3 col-sm-3 col-xs-12" href="{% url 'view_profile' following.username %}">
+                                        <img class="img-responsive project-image fifty-image" src="{{ following.image }}" alt="{{ following.name }}" />
+                                    </a>
+                                    <div class="desc col-md-9 col-sm-9 col-xs-12">
+                                        <a href="{% url 'view_profile' following.username %}">
+                                            <p class="title">{{ following.first_name}} {{ following.last_name }}</p>
+                                        </a>
+                                    </div><!--//desc-->
+                                </div><!--//item-->
+                                <hr>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+</div>
+
+<!-- dashboard content -->
+<div class="container section-wrapper" id="main">
+    {% block content %}
+    {% endblock %}
+</div>
+
+{% endblock %}

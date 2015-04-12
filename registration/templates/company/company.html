@@ -1,0 +1,63 @@
+{% extends "base_template.html" %}
+
+{% block base_content %}
+
+<!-- ******HEADER****** -->
+<header class="header">
+    <div class="container">
+        <br>
+        <br>
+        <div class="text-center">
+            <h1></h1>
+        </div>
+        <img class="profile-image img-responsive img-circle pull-left" src="{{ profile.image }}" alt="{{ profile.name }}" />
+        <div class="profile-content pull-left">
+            <h1 class="name">{{ company.name }}</h1>
+            <h2 class="desc">{{ company.one_liner }}</h2>
+        </div><!--//profile-->
+        <a class="btn btn-cta-primary pull-right" href="" target="_blank"><i class="fa fa-paper-plane"></i>soon Follow Me</a>
+        <a class="btn btn-cta-primary pull-right" href="" target="_blank"><i class="fa fa-paper-plane"></i>soon I want to Invest</a>
+    </div><!--//container-->
+</header><!--//header-->
+<div class="container sections-wrapper">
+        <div class="row">
+            <div class="primary col-md-8 col-sm-12 col-xs-12">
+                <section class="about section">
+                    <div class="section-inner">
+                       <p>{{ company.description }}</p>
+                    </div>
+                </section>
+            </div>
+            <div class="primary col-md-4 col-sm-12 col-xs-12">
+                <section class="about section">
+                    <div class="section-inner">
+                        <p class="text-center"><b>founders</b></p>
+
+                        <hr>
+                        {% for founder in founders %}
+                            <div class="item row">
+                                <a class="col-md-3 col-sm-3 col-xs-12" href="{% url 'view_profile' founder.username %}">
+                                    <img class="img-responsive project-image fifty-image" src="{{ founder.image }}" alt="{{ founder.name }}" />
+                                </a>
+                                <div class="desc col-md-9 col-sm-9 col-xs-12">
+                                    <a href="{% url 'view_profile' founder.username %}">
+                                        <p class="title">{{ founder.first_name}} {{ founder.last_name }}</p>
+                                    </a>
+                                </div><!--//desc-->
+                            </div><!--//item-->
+                            <hr>
+                        {% endfor %}
+                        <p></p>
+                    </div>
+                </section>
+            </div>
+        </div>
+</div>
+
+<!-- dashboard content -->
+<div class="container section-wrapper" id="main">
+    {% block content %}
+    {% endblock %}
+</div>
+
+{% endblock %}
