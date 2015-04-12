@@ -26,7 +26,7 @@ SECRET_KEY = 'h5e-n-7u1*90_^q=5no1m3bio$#8@&3(&ey&!e6c#v!d8k1617'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -235,7 +235,7 @@ ALLOWED_HOSTS = ['*']
 import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = 'staticfiles'
-STATIC_URL = '/static/'
+# STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
